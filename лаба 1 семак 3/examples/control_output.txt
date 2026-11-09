@@ -1,0 +1,57 @@
+$ ./dbms --file control.data --query 'TINSERT mytree 10 5 20 3 7 15'
+
+$ ./dbms --file control.data --query 'PRINT mytree'
+=== PRINT mytree ===
+root = 10
+root->left = 5
+root->right = 20
+root->left->left = 3
+root->left->right = 7
+root->right->left = 15
+
+$ ./dbms --file control.data --query 'TCHECKCOMPLETE mytree'
+TRUE
+
+$ ./dbms --file control.data --query 'TFIND mytree 7'
+TRUE
+
+$ ./dbms --file control.data --query 'TFIND mytree 100'
+FALSE
+
+$ ./dbms --file control.data --query 'TINSERT mytree 20 -2'
+
+$ ./dbms --file control.data --query 'PRINT mytree'
+=== PRINT mytree ===
+root = 10
+root->left = 5
+root->right = 20
+root->left->left = 3
+root->left->right = 7
+root->right->left = 15
+root->right->right = 20
+root->left->left->left = -2
+
+$ ./dbms --file control.data --query 'TCHECKCOMPLETE mytree'
+TRUE
+
+$ ./dbms --file control.data --query 'SPUSH s 1 2 3'
+
+$ ./dbms --file control.data --query 'SREAD s'
+ 3 2 1
+
+$ ./dbms --file control.data --query 'SPOP s'
+3
+
+$ ./dbms --file control.data --query 'SREAD s'
+ 2 1
+
+$ ./dbms --file control.data --query 'QPUSH q 1 2 3'
+
+$ ./dbms --file control.data --query 'QREAD q'
+ 1 2 3
+
+$ ./dbms --file control.data --query 'QPOP q'
+1
+
+$ ./dbms --file control.data --query 'QREAD q'
+ 2 3

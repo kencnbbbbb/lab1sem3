@@ -1,0 +1,6 @@
+Array arr 10 20 30
+OneLinkedList forward a b c
+LinkedList double x y z
+Stack stack bottom middle top
+Queue queue first second third
+Tree mytree 10 5 20 3 7 15
